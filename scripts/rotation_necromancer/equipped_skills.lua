@@ -67,6 +67,8 @@ local spell_id_map = {
     [499281] = "bone_storm",         -- Bone Storm
     [1059157] = "raise_skeleton",    -- Raise Skeleton
     [440463] = "golem_control",      -- Golem Control
+    [463175] = "decompose",          -- Decompose
+    [1644584] = "soulrift",          -- Soulrift
 }
 
 -- Reverse map: module name to spell ID

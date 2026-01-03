@@ -83,6 +83,8 @@ The plugin tracks all Necromancer skills:
 - Bone Storm (499281)
 - Raise Skeleton (1059157)
 - Golem Control (440463)
+- Decompose (463175)
+- Soulrift (1644584)
 
 ### Usage Examples
 
