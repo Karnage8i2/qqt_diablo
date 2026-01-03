@@ -129,14 +129,6 @@ local function render_menu()
     end
     
     menu_elements.profile_combo:render("Build Profile", ordered_names, "Select which build profile to use")
-    
-    -- Display current profile description
-    local current_profile_name = get_current_profile()
-    local current_profile = get_profile(current_profile_name)
-    if current_profile then
-        -- Note: text display would be here if supported by the UI framework
-        -- For now, we'll just track it in the module
-    end
 end
 
 return {

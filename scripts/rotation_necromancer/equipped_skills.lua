@@ -5,7 +5,7 @@ local equipped_skills = {}
 
 -- Get equipped spell IDs from the player's skill bar
 local function get_equipped_spells()
-    local spell_ids = get_equipped_spell_ids() -- Returns a table of 6 spell IDs
+    local spell_ids = get_equipped_spell_ids() -- Returns a table of spell IDs from the skill bar
     if not spell_ids then
         return {}
     end
@@ -68,28 +68,9 @@ local spell_id_map = {
     [440463] = "golem_control",      -- Golem Control
 }
 
--- Get list of equipped spell modules for rotation
-local function get_equipped_spell_modules(all_spells)
-    local equipped = get_equipped_spells()
-    local equipped_modules = {}
-    
-    for spell_id, module_name in pairs(spell_id_map) do
-        if equipped[spell_id] and all_spells[module_name] then
-            table.insert(equipped_modules, {
-                module_name = module_name,
-                spell_id = spell_id,
-                spell_module = all_spells[module_name]
-            })
-        end
-    end
-    
-    return equipped_modules
-end
-
 return {
     get_equipped_spells = get_equipped_spells,
     is_spell_equipped = is_spell_equipped,
     get_equipped_spell_names = get_equipped_spell_names,
-    get_equipped_spell_modules = get_equipped_spell_modules,
     spell_id_map = spell_id_map,
 }

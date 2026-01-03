@@ -98,19 +98,21 @@ local mount_buff_name_hash_c = 1923;
 local my_utility = require("my_utility/my_utility");
 local my_target_selector = require("my_utility/my_target_selector");
 
+-- Cache for current update cycle to avoid repeated calls
+local cached_profile = nil
+local cached_use_equipped_only = false
+local cached_equipped_spells = nil
+
 -- Helper function to check if spell should be used based on filters
 local function should_use_spell(spell_module_name, spell_id)
-    local use_equipped_only = menu.equipped_skills_boolean:get()
-    local current_profile = build_profiles.get_current_profile()
-    
     -- Check build profile filter
-    if not build_profiles.is_spell_enabled_in_profile(spell_module_name, current_profile) then
+    if not build_profiles.is_spell_enabled_in_profile(spell_module_name, cached_profile) then
         return false
     end
     
     -- Check equipped skills filter
-    if use_equipped_only and spell_id then
-        if not equipped_skills.is_spell_equipped(spell_id) then
+    if cached_use_equipped_only and spell_id then
+        if not cached_equipped_spells[spell_id] then
             return false
         end
     end
@@ -130,6 +132,15 @@ on_update(function ()
         -- if plugin is disabled dont do any logic
         return;
     end;
+
+    -- Cache filter settings at the start of update cycle for better performance
+    cached_profile = build_profiles.get_current_profile()
+    cached_use_equipped_only = menu.equipped_skills_boolean:get()
+    if cached_use_equipped_only then
+        cached_equipped_spells = equipped_skills.get_equipped_spells()
+    else
+        cached_equipped_spells = {}
+    end
 
     local current_time = get_time_since_inject()
     if current_time < cast_end_time then
