@@ -108,8 +108,10 @@ local function get_current_profile()
         end
     end
     
+    -- Convert 0-based combo box index to 1-based Lua array index
     if selected_index >= 0 and selected_index < #ordered_names then
-        return ordered_names[selected_index + 1]
+        local lua_index = selected_index + 1
+        return ordered_names[lua_index]
     end
     
     return "Default"

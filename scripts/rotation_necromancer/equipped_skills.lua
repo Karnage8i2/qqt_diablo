@@ -34,6 +34,7 @@ local function get_equipped_spell_names()
         return names
     end
     
+    -- Filter out invalid spell IDs (0 and 1 are reserved/invalid values)
     for _, spell_id in ipairs(spell_ids) do
         if spell_id > 1 then
             local spell_name = get_name_for_spell(spell_id)

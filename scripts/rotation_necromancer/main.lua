@@ -98,10 +98,11 @@ local mount_buff_name_hash_c = 1923;
 local my_utility = require("my_utility/my_utility");
 local my_target_selector = require("my_utility/my_target_selector");
 
--- Cache for current update cycle to avoid repeated calls
-local cached_profile = nil
+-- Cache for current update cycle to avoid repeated calls (optimizes performance)
+-- These values are refreshed at the beginning of each update cycle
+local cached_profile = "Default"
 local cached_use_equipped_only = false
-local cached_equipped_spells = nil
+local cached_equipped_spells = {}
 
 -- Helper function to check if spell should be used based on filters
 local function should_use_spell(spell_module_name, spell_id)
