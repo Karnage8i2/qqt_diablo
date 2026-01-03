@@ -54,27 +54,28 @@ on_render_menu (function ()
         return;
     end;
     
-    spells.bone_splinters.menu();
-    spells.hemorrhage.menu();
-    spells.reap.menu();
-    spells.bone_spear.menu();
-    spells.sever.menu();
-    spells.blight.menu();
-    spells.blood_surge.menu();
-    spells.blood_lance.menu();
-    spells.blood_mist.menu();
-    spells.corpse_explosion.menu();
-    spells.bone_prison.menu();
-    spells.iron_maiden.menu();
-    spells.decrepify.menu();
-    spells.corpse_tendrils.menu();
-    spells.bone_spirit.menu();
-    spells.blood_wave.menu();
-    spells.army_of_the_dead.menu();
-    spells.bone_storm.menu();
-   
-    spells.raise_skeleton.menu();
-    spells.golem_control.menu();
+    -- Get equipped and non-equipped spells
+    local equipped_modules, non_equipped_modules = equipped_skills.get_organized_spells()
+    
+    -- Equipped Skills Section - shows skills currently on skill bar
+    if menu.equipped_skills_tree:push("Equipped Skills") then
+        for _, module_name in ipairs(equipped_modules) do
+            if spells[module_name] and spells[module_name].menu then
+                spells[module_name].menu()
+            end
+        end
+        menu.equipped_skills_tree:pop()
+    end
+    
+    -- Ultra Instinct Section - shows skills NOT on skill bar
+    if menu.ultra_instinct_tree:push("Ultra Instinct") then
+        for _, module_name in ipairs(non_equipped_modules) do
+            if spells[module_name] and spells[module_name].menu then
+                spells[module_name].menu()
+            end
+        end
+        menu.ultra_instinct_tree:pop()
+    end
 
     menu.main_tree:pop();
     

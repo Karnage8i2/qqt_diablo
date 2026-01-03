@@ -27,10 +27,16 @@ Automatic detection of skills on your skill bar - only spells equipped will be c
 2. Only spells that are equipped will be cast during rotation
 3. No manual configuration needed - it's always active
 
+**Menu Organization:**
+- **Equipped Skills** section: Shows all skills currently on your skill bar
+- **Ultra Instinct** section: Shows all skills NOT on your skill bar
+- This keeps the menu organized and helps you see at a glance which skills are active
+
 ### Features Combined
 Both features work together:
 - Select a build profile to focus on a specific playstyle
 - Equipped skills detection ensures only your equipped abilities are used
+- Menu is automatically organized based on your skill bar
 - Individual spell settings in the menu still apply for fine-tuning
 
 ### Backward Compatibility

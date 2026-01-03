@@ -69,9 +69,35 @@ local spell_id_map = {
     [440463] = "golem_control",      -- Golem Control
 }
 
+-- Reverse map: module name to spell ID
+local module_to_spell_id = {}
+for spell_id, module_name in pairs(spell_id_map) do
+    module_to_spell_id[module_name] = spell_id
+end
+
+-- Get lists of equipped and non-equipped spell module names
+local function get_organized_spells()
+    local equipped_spells_set = get_equipped_spells()
+    local equipped_modules = {}
+    local non_equipped_modules = {}
+    
+    -- Go through all spell modules and categorize them
+    for spell_id, module_name in pairs(spell_id_map) do
+        if equipped_spells_set[spell_id] then
+            table.insert(equipped_modules, module_name)
+        else
+            table.insert(non_equipped_modules, module_name)
+        end
+    end
+    
+    return equipped_modules, non_equipped_modules
+end
+
 return {
     get_equipped_spells = get_equipped_spells,
     is_spell_equipped = is_spell_equipped,
     get_equipped_spell_names = get_equipped_spell_names,
+    get_organized_spells = get_organized_spells,
     spell_id_map = spell_id_map,
+    module_to_spell_id = module_to_spell_id,
 }
