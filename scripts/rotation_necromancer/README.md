@@ -10,9 +10,8 @@ This enhanced version of the Necromancer rotation plugin adds two major features
 Select from pre-configured build profiles that enable only relevant spells for specific playstyles:
 
 - **Default**: All skills enabled based on individual menu settings (backward compatible)
-- **Bone Spear**: Bone Spear focused build with supporting skills
-- **Blood**: Blood magic focused build (Blood Lance, Blood Surge, Blood Wave, etc.)
-- **Minion**: Minion master build focused on summoning and supporting minions
+- **Golem**: Golem-focused build using golems as main damage source with supporting skills
+- **Shadowblight**: Blight and shadow damage focused build with curse synergies
 
 **How to use:**
 1. Open the plugin menu
@@ -87,10 +86,10 @@ The plugin tracks all Necromancer skills:
 
 ### Usage Examples
 
-**Example 1: Bone Spear Build**
-1. Equip Bone Spear build on your skill bar
-2. Select "Bone Spear" profile
-3. Result: Only Bone Spear and supporting skills that are equipped will cast
+**Example 1: Golem Build**
+1. Equip Golem build skills on your skill bar
+2. Select "Golem" profile
+3. Result: Only Golem and supporting skills that are equipped will cast
 
 **Example 2: Custom Build**
 1. Select "Default" profile
@@ -98,7 +97,7 @@ The plugin tracks all Necromancer skills:
 3. Configure individual spell settings in menu
 4. Result: Full customization based on your equipped skills
 
-**Example 3: Blood Build**
-1. Equip Blood skills on your skill bar
-2. Select "Blood" profile
-3. Result: Only Blood spells that are equipped will be used
+**Example 3: Shadowblight Build**
+1. Equip Blight and shadow skills on your skill bar
+2. Select "Shadowblight" profile
+3. Result: Only Blight and shadow damage skills that are equipped will be used
