@@ -48,9 +48,6 @@ on_render_menu (function ()
     
     -- Build Profile Selection
     build_profiles.render_menu();
-    
-    -- Equipped Skills Option
-    menu.equipped_skills_boolean:render("Only Use Equipped Skills", "When enabled, only casts spells that are equipped on your skill bar");
 
     if menu.main_boolean:get() == false then
         menu.main_tree:pop();
@@ -101,7 +98,6 @@ local my_target_selector = require("my_utility/my_target_selector");
 -- Cache for current update cycle to avoid repeated calls (optimizes performance)
 -- These values are refreshed at the beginning of each update cycle
 local cached_profile = "Default"
-local cached_use_equipped_only = false
 local cached_equipped_spells = {}
 
 -- Helper function to check if spell should be used based on filters
@@ -111,8 +107,8 @@ local function should_use_spell(spell_module_name, spell_id)
         return false
     end
     
-    -- Check equipped skills filter
-    if cached_use_equipped_only and spell_id then
+    -- Check equipped skills filter (always active - only cast spells on skill bar)
+    if spell_id and cached_equipped_spells then
         if not cached_equipped_spells[spell_id] then
             return false
         end
@@ -136,12 +132,8 @@ on_update(function ()
 
     -- Cache filter settings at the start of update cycle for better performance
     cached_profile = build_profiles.get_current_profile()
-    cached_use_equipped_only = menu.equipped_skills_boolean:get()
-    if cached_use_equipped_only then
-        cached_equipped_spells = equipped_skills.get_equipped_spells()
-    else
-        cached_equipped_spells = {}
-    end
+    -- Always detect equipped skills to only cast spells on skill bar
+    cached_equipped_spells = equipped_skills.get_equipped_spells()
 
     local current_time = get_time_since_inject()
     if current_time < cast_end_time then

@@ -20,17 +20,17 @@ Select from pre-configured build profiles that enable only relevant spells for s
 3. The rotation will automatically filter spells based on the selected profile
 
 #### 2. Equipped Skills Detection
-Enable automatic detection of skills on your skill bar to only cast spells you have equipped.
+Automatic detection of skills on your skill bar - only spells equipped will be cast during rotation.
 
-**How to use:**
-1. Check "Only Use Equipped Skills" in the plugin menu
-2. The plugin will automatically detect your equipped spells
-3. Only spells on your skill bar will be cast during rotation
+**How it works:**
+1. The plugin automatically detects your equipped spells from the skill bar
+2. Only spells that are equipped will be cast during rotation
+3. No manual configuration needed - it's always active
 
 ### Features Combined
 Both features work together:
 - Select a build profile to focus on a specific playstyle
-- Enable "Only Use Equipped Skills" to ensure only your equipped abilities are used
+- Equipped skills detection ensures only your equipped abilities are used
 - Individual spell settings in the menu still apply for fine-tuning
 
 ### Backward Compatibility
@@ -81,19 +81,18 @@ The plugin tracks all Necromancer skills:
 
 ### Usage Examples
 
-**Example 1: Bone Spear Build with Equipped Skills Only**
+**Example 1: Bone Spear Build**
 1. Equip Bone Spear build on your skill bar
 2. Select "Bone Spear" profile
-3. Enable "Only Use Equipped Skills"
-4. Result: Only Bone Spear and supporting skills that are equipped will cast
+3. Result: Only Bone Spear and supporting skills that are equipped will cast
 
 **Example 2: Custom Build**
 1. Select "Default" profile
-2. Enable "Only Use Equipped Skills"
+2. Equip your desired skills on the skill bar
 3. Configure individual spell settings in menu
 4. Result: Full customization based on your equipped skills
 
-**Example 3: Profile-Based (Classic)**
-1. Select any build profile
-2. Keep "Only Use Equipped Skills" disabled
-3. Result: Profile determines which spells are used, regardless of equipment
+**Example 3: Blood Build**
+1. Equip Blood skills on your skill bar
+2. Select "Blood" profile
+3. Result: Only Blood spells that are equipped will be used
