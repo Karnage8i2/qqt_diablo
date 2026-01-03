@@ -3,6 +3,8 @@ local menu_elements_bone =
 {
     main_boolean        = checkbox:new(true, get_hash(my_utility.plugin_label .. "main_boolean")),
     main_tree           = tree_node:new(0),
+    equipped_skills_tree = tree_node:new(1),
+    ultra_instinct_tree = tree_node:new(1),
 }
 
 return menu_elements_bone;

@@ -10,6 +10,8 @@ if not is_necro then
 end;
 
 local menu = require("menu");
+local equipped_skills = require("equipped_skills");
+local build_profiles = require("build_profiles");
 
 local spells =
 {
@@ -43,33 +45,37 @@ on_render_menu (function ()
     end;
 
     menu.main_boolean:render("Enable Plugin", "");
+    
+    -- Build Profile Selection
+    build_profiles.render_menu();
 
     if menu.main_boolean:get() == false then
         menu.main_tree:pop();
         return;
     end;
     
-    spells.bone_splinters.menu();
-    spells.hemorrhage.menu();
-    spells.reap.menu();
-    spells.bone_spear.menu();
-    spells.sever.menu();
-    spells.blight.menu();
-    spells.blood_surge.menu();
-    spells.blood_lance.menu();
-    spells.blood_mist.menu();
-    spells.corpse_explosion.menu();
-    spells.bone_prison.menu();
-    spells.iron_maiden.menu();
-    spells.decrepify.menu();
-    spells.corpse_tendrils.menu();
-    spells.bone_spirit.menu();
-    spells.blood_wave.menu();
-    spells.army_of_the_dead.menu();
-    spells.bone_storm.menu();
-   
-    spells.raise_skeleton.menu();
-    spells.golem_control.menu();
+    -- Get equipped and non-equipped spells
+    local equipped_modules, non_equipped_modules = equipped_skills.get_organized_spells()
+    
+    -- Equipped Skills Section - shows skills currently on skill bar
+    if menu.equipped_skills_tree:push("Equipped Skills") then
+        for _, module_name in ipairs(equipped_modules) do
+            if spells[module_name] and spells[module_name].menu then
+                spells[module_name].menu()
+            end
+        end
+        menu.equipped_skills_tree:pop()
+    end
+    
+    -- Ultra Instinct Section - shows skills NOT on skill bar
+    if menu.ultra_instinct_tree:push("Ultra Instinct") then
+        for _, module_name in ipairs(non_equipped_modules) do
+            if spells[module_name] and spells[module_name].menu then
+                spells[module_name].menu()
+            end
+        end
+        menu.ultra_instinct_tree:pop()
+    end
 
     menu.main_tree:pop();
     
@@ -90,6 +96,28 @@ local mount_buff_name_hash_c = 1923;
 local my_utility = require("my_utility/my_utility");
 local my_target_selector = require("my_utility/my_target_selector");
 
+-- Cache for current update cycle to avoid repeated calls (optimizes performance)
+-- These values are refreshed at the beginning of each update cycle
+local cached_profile = "Default"
+local cached_equipped_spells = {}
+
+-- Helper function to check if spell should be used based on filters
+local function should_use_spell(spell_module_name, spell_id)
+    -- Check build profile filter
+    if not build_profiles.is_spell_enabled_in_profile(spell_module_name, cached_profile) then
+        return false
+    end
+    
+    -- Check equipped skills filter (always active - only cast spells on skill bar)
+    if spell_id and cached_equipped_spells then
+        if not cached_equipped_spells[spell_id] then
+            return false
+        end
+    end
+    
+    return true
+end
+
 local is_blood_mist = false
 on_update(function ()
 
@@ -102,6 +130,11 @@ on_update(function ()
         -- if plugin is disabled dont do any logic
         return;
     end;
+
+    -- Cache filter settings at the start of update cycle for better performance
+    cached_profile = build_profiles.get_current_profile()
+    -- Always detect equipped skills to only cast spells on skill bar
+    cached_equipped_spells = equipped_skills.get_equipped_spells()
 
     local current_time = get_time_since_inject()
     if current_time < cast_end_time then
@@ -124,7 +157,7 @@ on_update(function ()
     end  
     
 
-    if spells.raise_skeleton.logics()then
+    if should_use_spell("raise_skeleton", 1059157) and spells.raise_skeleton.logics()then
         cast_end_time = current_time + 0.5;
         return;
     end;
@@ -205,97 +238,97 @@ on_update(function ()
     end
 
 
-    if spells.golem_control.logics()then
+    if should_use_spell("golem_control", 440463) and spells.golem_control.logics()then
         cast_end_time = current_time + 0.5;
         return;
     end;
 
-    if spells.blood_mist.logics()then
+    if should_use_spell("blood_mist", 493422) and spells.blood_mist.logics()then
         cast_end_time = current_time + 0.5;
         return;
     end;
 
-    if spells.decrepify.logics()then
+    if should_use_spell("decrepify", 915150) and spells.decrepify.logics()then
         cast_end_time = current_time + 0.50;
         return;
     end;  
 
-    if spells.blood_wave.logics(best_target)then
+    if should_use_spell("blood_wave", 658216) and spells.blood_wave.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.army_of_the_dead.logics()then
+    if should_use_spell("army_of_the_dead", 497193) and spells.army_of_the_dead.logics()then
         cast_end_time = current_time + 0.2;
         return;
     end;
 
-    if spells.corpse_tendrils.logics()then
+    if should_use_spell("corpse_tendrils", 463349) and spells.corpse_tendrils.logics()then
         cast_end_time = current_time + 0.30 
         return;
     end
 
-    if spells.bone_spear.logics(best_target, entity_list)then
+    if should_use_spell("bone_spear", 432879) and spells.bone_spear.logics(best_target, entity_list)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.corpse_explosion.logics()then
+    if should_use_spell("corpse_explosion", 432897) and spells.corpse_explosion.logics()then
         cast_end_time = current_time + 0.50;
         return;
     end;
 
-    if spells.bone_splinters.logics(best_target)then
+    if should_use_spell("bone_splinters", 500962) and spells.bone_splinters.logics(best_target)then
         cast_end_time = current_time + 0.5;
         return;
     end;
 
-    if spells.reap.logics(best_target)then
+    if should_use_spell("reap", 432896) and spells.reap.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.blood_lance.logics(best_target)then
+    if should_use_spell("blood_lance", 501629) and spells.blood_lance.logics(best_target)then
         cast_end_time = current_time + 0.6;
         return;
     end;
 
-    if spells.blood_surge.logics()then
+    if should_use_spell("blood_surge", 592163) and spells.blood_surge.logics()then
         cast_end_time = current_time + 0.6;
         return;
     end;
 
-    if spells.blight.logics(best_target)then
+    if should_use_spell("blight", 481293) and spells.blight.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.sever.logics(best_target)then
+    if should_use_spell("sever", 481785) and spells.sever.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.bone_prison.logics(best_target)then
+    if should_use_spell("bone_prison", 493453) and spells.bone_prison.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.iron_maiden.logics()then
+    if should_use_spell("iron_maiden", 915152) and spells.iron_maiden.logics()then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.bone_spirit.logics(best_target)then
+    if should_use_spell("bone_spirit", 469641) and spells.bone_spirit.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if spells.bone_storm.logics()then
+    if should_use_spell("bone_storm", 499281) and spells.bone_storm.logics()then
         cast_end_time = current_time + 0.2;
         return;
     end;
 
-    if spells.hemorrhage.logics(best_target)then
+    if should_use_spell("hemorrhage", 484661) and spells.hemorrhage.logics(best_target)then
         cast_end_time = current_time + 0.5;
         return;
     end;
@@ -451,4 +484,4 @@ on_render(function ()
 
 end);
 
-console.print("Lua Plugin - Necromancer Base - Version 1.5");
+console.print("Lua Plugin - Necromancer Base - Version 2.0 (Build Profiles + Equipped Skills)");
