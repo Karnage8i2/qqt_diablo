@@ -23,6 +23,8 @@ local build_profiles = {
             "bone_spear",
             "hemorrhage",
             "reap",
+            "soulrift",
+            "decompose",
         },
     },
     Shadowblight = {
@@ -38,6 +40,7 @@ local build_profiles = {
             "hemorrhage",
             "raise_skeleton",
             "golem_control",
+            "soulrift",
         },
     },
 }
