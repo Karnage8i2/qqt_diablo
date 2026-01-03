@@ -46,26 +46,26 @@ end
 
 -- Map spell IDs to their module names for Necromancer
 local spell_id_map = {
-    [432631] = "blood_mist",         -- Blood Mist
+    [493422] = "blood_mist",         -- Blood Mist
     [432879] = "bone_spear",         -- Bone Spear
-    [432000] = "bone_splinters",     -- Bone Splinters
+    [500962] = "bone_splinters",     -- Bone Splinters
     [432897] = "corpse_explosion",   -- Corpse Explosion
-    [432338] = "corpse_tendrils",    -- Corpse Tendrils
-    [432691] = "decrepify",          -- Decrepify
-    [432015] = "hemorrhage",         -- Hemorrhage
-    [432017] = "reap",               -- Reap
-    [432214] = "blood_lance",        -- Blood Lance
-    [432611] = "blood_surge",        -- Blood Surge
-    [432622] = "blight",             -- Blight
-    [432011] = "sever",              -- Sever
-    [432265] = "bone_prison",        -- Bone Prison
-    [432004] = "iron_maiden",        -- Iron Maiden
-    [432187] = "bone_spirit",        -- Bone Spirit
-    [432598] = "blood_wave",         -- Blood Wave
-    [432167] = "army_of_the_dead",   -- Army of the Dead
-    [432281] = "bone_storm",         -- Bone Storm
-    [432792] = "raise_skeleton",     -- Raise Skeleton
-    [432733] = "golem_control",      -- Golem Control
+    [463349] = "corpse_tendrils",    -- Corpse Tendrils
+    [915150] = "decrepify",          -- Decrepify
+    [484661] = "hemorrhage",         -- Hemorrhage
+    [432896] = "reap",               -- Reap
+    [501629] = "blood_lance",        -- Blood Lance
+    [592163] = "blood_surge",        -- Blood Surge
+    [481293] = "blight",             -- Blight
+    [481785] = "sever",              -- Sever
+    [493453] = "bone_prison",        -- Bone Prison
+    [915152] = "iron_maiden",        -- Iron Maiden
+    [469641] = "bone_spirit",        -- Bone Spirit
+    [658216] = "blood_wave",         -- Blood Wave
+    [497193] = "army_of_the_dead",   -- Army of the Dead
+    [499281] = "bone_storm",         -- Bone Storm
+    [1059157] = "raise_skeleton",    -- Raise Skeleton
+    [440463] = "golem_control",      -- Golem Control
 }
 
 -- Get list of equipped spell modules for rotation

@@ -152,7 +152,7 @@ on_update(function ()
     end  
     
 
-    if should_use_spell("raise_skeleton", 432792) and spells.raise_skeleton.logics()then
+    if should_use_spell("raise_skeleton", 1059157) and spells.raise_skeleton.logics()then
         cast_end_time = current_time + 0.5;
         return;
     end;
@@ -233,32 +233,32 @@ on_update(function ()
     end
 
 
-    if should_use_spell("golem_control", 432733) and spells.golem_control.logics()then
+    if should_use_spell("golem_control", 440463) and spells.golem_control.logics()then
         cast_end_time = current_time + 0.5;
         return;
     end;
 
-    if should_use_spell("blood_mist", 432631) and spells.blood_mist.logics()then
+    if should_use_spell("blood_mist", 493422) and spells.blood_mist.logics()then
         cast_end_time = current_time + 0.5;
         return;
     end;
 
-    if should_use_spell("decrepify", 432691) and spells.decrepify.logics()then
+    if should_use_spell("decrepify", 915150) and spells.decrepify.logics()then
         cast_end_time = current_time + 0.50;
         return;
     end;  
 
-    if should_use_spell("blood_wave", 432598) and spells.blood_wave.logics(best_target)then
+    if should_use_spell("blood_wave", 658216) and spells.blood_wave.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if should_use_spell("army_of_the_dead", 432167) and spells.army_of_the_dead.logics()then
+    if should_use_spell("army_of_the_dead", 497193) and spells.army_of_the_dead.logics()then
         cast_end_time = current_time + 0.2;
         return;
     end;
 
-    if should_use_spell("corpse_tendrils", 432338) and spells.corpse_tendrils.logics()then
+    if should_use_spell("corpse_tendrils", 463349) and spells.corpse_tendrils.logics()then
         cast_end_time = current_time + 0.30 
         return;
     end
@@ -273,57 +273,57 @@ on_update(function ()
         return;
     end;
 
-    if should_use_spell("bone_splinters", 432000) and spells.bone_splinters.logics(best_target)then
+    if should_use_spell("bone_splinters", 500962) and spells.bone_splinters.logics(best_target)then
         cast_end_time = current_time + 0.5;
         return;
     end;
 
-    if should_use_spell("reap", 432017) and spells.reap.logics(best_target)then
+    if should_use_spell("reap", 432896) and spells.reap.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if should_use_spell("blood_lance", 432214) and spells.blood_lance.logics(best_target)then
+    if should_use_spell("blood_lance", 501629) and spells.blood_lance.logics(best_target)then
         cast_end_time = current_time + 0.6;
         return;
     end;
 
-    if should_use_spell("blood_surge", 432611) and spells.blood_surge.logics()then
+    if should_use_spell("blood_surge", 592163) and spells.blood_surge.logics()then
         cast_end_time = current_time + 0.6;
         return;
     end;
 
-    if should_use_spell("blight", 432622) and spells.blight.logics(best_target)then
+    if should_use_spell("blight", 481293) and spells.blight.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if should_use_spell("sever", 432011) and spells.sever.logics(best_target)then
+    if should_use_spell("sever", 481785) and spells.sever.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if should_use_spell("bone_prison", 432265) and spells.bone_prison.logics(best_target)then
+    if should_use_spell("bone_prison", 493453) and spells.bone_prison.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if should_use_spell("iron_maiden", 432004) and spells.iron_maiden.logics()then
+    if should_use_spell("iron_maiden", 915152) and spells.iron_maiden.logics()then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if should_use_spell("bone_spirit", 432187) and spells.bone_spirit.logics(best_target)then
+    if should_use_spell("bone_spirit", 469641) and spells.bone_spirit.logics(best_target)then
         cast_end_time = current_time + 0.4;
         return;
     end;
 
-    if should_use_spell("bone_storm", 432281) and spells.bone_storm.logics()then
+    if should_use_spell("bone_storm", 499281) and spells.bone_storm.logics()then
         cast_end_time = current_time + 0.2;
         return;
     end;
 
-    if should_use_spell("hemorrhage", 432015) and spells.hemorrhage.logics(best_target)then
+    if should_use_spell("hemorrhage", 484661) and spells.hemorrhage.logics(best_target)then
         cast_end_time = current_time + 0.5;
         return;
     end;
